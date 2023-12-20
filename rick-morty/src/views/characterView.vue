@@ -5,10 +5,10 @@ import { useCharacterStore } from '../stores/character';
 
 let characters = ref([]);
 let id = ref("");
-
+let nbPage = ref('');
 
 watchEffect(async () => {
-    const response = await fetch(`https://rickandmortyapi.com/api/character/?page=1`)
+    const response = await fetch(`https://rickandmortyapi.com/api/character/?page=nbPage`)
 
     characters.value = await response.json();
     console.log(characters.value)
@@ -44,7 +44,17 @@ watchEffect(async () => {
 
         </div>
 
+        <div >
+            <div class="pagination">
+            <button class="btn btn-success" @click="nbPage--" > {{ nbPage.pages-1 }}
+              Précédent
+            </button>
 
+            <button class="btn btn-success px-4 " @click="nbPage.pages">
+                Suivant
+            </button>
+        </div>
+        </div>
 
     </div>
 </template>
