@@ -5,17 +5,34 @@ import { useCharacterStore } from '../stores/character';
 
 let characters = ref([]);
 let id = ref("");
-let nbPage = ref('');
+let nbPage = ref(1);
+
+
+const previousPage = (async () => {
+    if (nbPage.value > 1) {
+        nbPage.value--;
+        console.log(nbPage.value);
+    }
+
+});
+
+
+const nextPage = (async () => {
+    if (nbPage.value < 43) {
+        nbPage.value++;
+        console.log(nbPage.value);
+    }
+
+});
+
 
 watchEffect(async () => {
-    const response = await fetch(`https://rickandmortyapi.com/api/character/?page=nbPage`)
+    const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${nbPage.value}`)
 
     characters.value = await response.json();
     console.log(characters.value)
 
 });
-
-
 
 </script>
 
@@ -34,26 +51,22 @@ watchEffect(async () => {
                                 <h5 class="card-title">{{ character.name }}</h5>
                                 <p class="card-text"> <span>Species :</span> {{ character.species }}</p>
                             </div>
-
-
                         </div>
 
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <div >
+        <div>
             <div class="pagination">
-            <button class="btn btn-success" @click="nbPage--" > {{ nbPage.pages-1 }}
-              Précédent
-            </button>
+                <button class="btn btn-success" @click="previousPage"> {{ nbPage - 1 }}
+                    Previous
+                </button>
 
-            <button class="btn btn-success px-4 " @click="nbPage.pages">
-                Suivant
-            </button>
-        </div>
+                <button class="btn btn-success px-4 " @click="nextPage">{{ nbPage + 1 }}
+                    Next
+                </button>
+            </div>
         </div>
 
     </div>
@@ -81,7 +94,26 @@ img:hover {
 span {
     color: rgb(53, 231, 53);
 }
+
 .text {
     margin-top: 10px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+ 
+
+}
+
+.btn {
+    background-color: rgb(53, 231, 53);
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+main {
+    margin-top: -120px;
+    margin-bottom: 80px;
+} 
 </style>

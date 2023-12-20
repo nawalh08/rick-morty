@@ -38,21 +38,5 @@
 </template>
 
 <style>
- .pagination {
-    display: flex;
-    justify-content: center;
- 
 
-}
-
-.btn {
-    background-color: rgb(53, 231, 53);
-    margin-right: 40px;
-    margin-left: 40px;
-}
-
-main {
-    margin-top: -120px;
-    margin-bottom: 80px;
-} 
 </style>
