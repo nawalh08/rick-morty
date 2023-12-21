@@ -17,7 +17,7 @@ let password = ('');
 
             <div class="mb-md-5 mt-md-4 pb-5">
 
-              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <h2 class=" titre fw-bold mb-2 text-uppercase">Login</h2>
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
               <div class="form-outline form-white mb-4">
@@ -35,7 +35,7 @@ let password = ('');
             </div>
 
             <div>
-              <p class="mb-0">Don't have an account? <a href="/sign" class="text-white-50 fw-bold">Sign Up</a>
+              <p class="mb-5">Don't have an account? <a href="/sign" class="login">Sign Up</a>
               </p>
             </div>
 

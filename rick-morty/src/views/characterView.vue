@@ -1,30 +1,22 @@
 <script setup>
 import { provide, ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
-import { useCharacterStore } from '../stores/character';
+
 import FilterComponent from "../components/FilterComponent.vue"
+import { useCharactersStore } from '@/stores/character';
+
+const personnageStore = useCharactersStore();
+const {getCharacterByPage} = personnageStore
+
+onMounted(()=>
+getCharacterByPage("","","","","","")
+)
 
 let characters = ref([]);
 let id = ref("");
 let nbPage = ref(1);
 
 
-const previousPage = (async () => {
-    if (nbPage.value > 1) {
-        nbPage.value--;
-        console.log(nbPage.value);
-    }
-
-});
-
-
-const nextPage = (async () => {
-    if (nbPage.value < 43) {
-        nbPage.value++;
-        console.log(nbPage.value);
-    }
-
-});
 
 
 watchEffect(async () => {
@@ -40,9 +32,8 @@ watchEffect(async () => {
 <template>
     <FilterComponent/>
     <div class="container text-center">
-        <input @keyup.enter="id = $event.target.value" placeholder="saisir id">
-        <div class="row row-cols-4" v-if="characters.results">
-            <div v-for="character in characters.results" :key="character.id">
+        <div class="row row-cols-4" v-if="personnageStore.data.results">
+            <div v-for="character in personnageStore.data.results" :key="character.id">
                 <div class="col my-2">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
@@ -59,17 +50,7 @@ watchEffect(async () => {
                 </div>
             </div>
         </div>
-        <div>
-            <div class="pagination">
-                <button class="btn btn-success" @click="previousPage"> {{ nbPage - 1 }}
-                    Previous
-                </button>
-
-                <button class="btn btn-success px-4 " @click="nextPage">{{ nbPage + 1 }}
-                    Next
-                </button>
-            </div>
-        </div>
+        
 
     </div>
 </template>

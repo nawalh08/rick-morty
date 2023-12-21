@@ -14,7 +14,7 @@ let password = ('');
 
             <div class="mb-md-5 mt-md-4 pb-5">
 
-              <h2 class="fw-bold mb-2 text-uppercase">Sign up</h2>
+              <h2 class="titre fw-bold mb-2 text-uppercase">Sign up</h2>
             
               <div class="form-outline form-white mb-4">
                 <input type="text" id="typeText" class="form-control form-control-lg" />
@@ -32,13 +32,10 @@ let password = ('');
               </div>
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign up</button>
-
-              <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+              <div >
+                <p class="mb-0 mt-5 ">have an account? <a href="/login" class="login">Login</a></p>
               </div>
-
+              
             </div>
 
           </div>
@@ -51,12 +48,20 @@ let password = ('');
 
 <style>
 .card1 {
-  background-color:  rgb(160, 160, 160);
-  border-radius: 10px;
+  background-color:  rgb(65, 95, 65);
+  border-radius: 10px ;
  
 }
 .card {
   margin-bottom: 200px;
+}
+.login {
+  color: rgb(53, 231, 53);
+  font-weight: bold;
+  
+}
+.titre {
+  color: rgb(53, 231, 53);;
 }
 
 </style>

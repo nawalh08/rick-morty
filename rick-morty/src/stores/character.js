@@ -1,25 +1,41 @@
-import {ref,} from 'vue';
-import {defineStore} from 'pinia'
-
-
-export const useCharacterStore = defineStore('character', () =>{
-    
-    const characters = ref([]);
-    
-    async function fetchCharacterData(){
+import { defineStore } from "pinia";
+import { ref } from "vue";
+ 
+export const useCharactersStore = defineStore('characters', () => {
+ 
+    const data = ref('');
+    const data2 =ref('')
+ 
+    async function getCharacterByPage(page,name,etat,gender,species,type) {
+ 
         try {
-            const response = await fetch('https://rickandmortyapi.com/api/character/?page=1')
-            if (!response.ok) {
-                throw new Error('Erreur lors de la récupération') // si ce n'est pas ok dans ces cas la on met un message d'erreur
-                
-            }
-
-            const data = await response.json(); // Récupération de données
-            characters.value = data.results;
-           // console.log("lolo" + characters.value);
-        } catch (err) { // (err) pour toutes les autres erreurs.
-
+          const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}&status=${etat}&gender=${gender}&species=${species}&type=${type}`);
+          if (!response.ok) {
+            throw new Error('Erreur lors du chargement des données');
+          }
+          const jsonData = await response.json();
+          data.value = jsonData;
+     
+          console.log(data.value.results);
+        } catch (error) {
+          console.error('Erreur:', error);
         }
-    }
-    return {characters, fetchCharacterData}
-});
+      }
+    async function getCharacterByID(id) {
+ 
+        try {
+          const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+          if (!response.ok) {
+            throw new Error('Erreur lors du chargement des données');
+          }
+          const jsonData = await response.json();
+          data2.value = jsonData;
+     
+          console.log(data.value.results);
+        } catch (error) {
+          console.error('Erreur:', error);
+        }
+      }
+     
+      return {data,data2,getCharacterByPage,getCharacterByID}
+})
