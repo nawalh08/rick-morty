@@ -31,6 +31,7 @@ if (!characterFound) {
 </script>
 
 <template>
+  
   <div class="contenu">
     <div class="card" style="width: 900px;">
       <RouterLink :to="`/perso`">

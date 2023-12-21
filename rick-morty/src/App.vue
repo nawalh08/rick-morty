@@ -4,7 +4,8 @@
 import { RouterView, RouterLink } from "vue-router";
 import NavComponent from "./components/NavComponent.vue"
 import FooterComponent from "./components/FooterComponent.vue";
-import PaginationComponent from "./components/PaginationComponent.vue"
+
+
 
 
 
@@ -16,6 +17,7 @@ import PaginationComponent from "./components/PaginationComponent.vue"
 <header>
   <NavComponent/>
 </header>
+
   <RouterView />
   <PaginationComponent/>
   <footer>

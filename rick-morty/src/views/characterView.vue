@@ -2,6 +2,7 @@
 import { provide, ref, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import { useCharacterStore } from '../stores/character';
+import FilterComponent from "../components/FilterComponent.vue"
 
 let characters = ref([]);
 let id = ref("");
@@ -37,6 +38,7 @@ watchEffect(async () => {
 </script>
 
 <template>
+    <FilterComponent/>
     <div class="container text-center">
         <input @keyup.enter="id = $event.target.value" placeholder="saisir id">
         <div class="row row-cols-4" v-if="characters.results">
